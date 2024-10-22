@@ -1,3 +1,7 @@
+@if(session()->has('success'))
+    {{ session()->get('success') }}
+@endif
+
 <form method="POST" action="">
     @csrf
     <div>
