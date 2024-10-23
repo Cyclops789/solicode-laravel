@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Message;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Message;
 use Mail;
 
 class ContactController extends Controller
@@ -22,10 +22,8 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
 
-        Mail::send('emails.contact', $data, function(Message $message) use ($data) {
-            $message->to('test2@cyyc.lol', 'Receiver')->subject('New message from: '.$data['email']);
-        });
+        Mail::to('test2@cyyc.lol', 'Receiver')->send(new Message($data));
 
-        return redirect('/')->with('success', 'Your message has been sent.');
+        return redirect('/contact')->with('success', 'Your message has been sent.');
     }
 }
