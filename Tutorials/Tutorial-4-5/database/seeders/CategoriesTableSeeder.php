@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Category::factory()->count(10)->create();
-        \App\Models\Category::factory()->count(5)->active()->create();
+        Category::factory()->count(10)->create();
+        Category::factory()->count(5)->active()->create();
     }
 }
