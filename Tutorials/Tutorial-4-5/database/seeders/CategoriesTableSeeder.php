@@ -16,17 +16,17 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     {
         // Category::factory()->count(10)->create();
-        // Category::factory()->count(5)->active()->create();
+        // Category::factory()->count(5)->create();
 
-        $csv = Reader::createFromPath(database_path('seeders/categories.csv'));
+        $csv = Reader::createFromPath(database_path('seeds/categories.csv'));
         $csv->setHeaderOffset(0);
-
-        $csv->each(function ($record) {
-            Category::createOrFirst([
+        
+        
+        foreach ($csv as $record) {
+            Category::create([
                 'name' => $record['name'],
                 'description' => $record['description'],
-                'is_active' => (bool) $record['is_active'],
             ]);
-        });
+        }
     }
 }
