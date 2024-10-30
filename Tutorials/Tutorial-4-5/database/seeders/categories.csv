@@ -1,4 +1,4 @@
-name,description,is_active
+nam,description,is_active
 Product A,"High-quality product, durable and reliable.",true
 Product B,"Affordable option with basic features.",false
 Product C,"Premium version with extended warranty.",true
